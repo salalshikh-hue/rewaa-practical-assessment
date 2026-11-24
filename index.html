@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>الاختبار العملي لمنصة رواء | rewaa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#00ABAB;--teal-d:#00777A;--teal-dd:#063D3E;--teal-tint:#E7F7F7;--teal-mist:#C7ECEC;
+  --navy:#00205C;--gold:#F6CA59;--gold-tint:#FDF3DE;--bluegrey:#69879C;--slate:#434F58;
+  --red:#C24A42;--red-tint:#FBEAE8;--green:#1F8A4C;--green-tint:#E3F4EA;
+  --bg:#EAF7F7;--card:#FFFFFF;--line:#E3E9E8;--line-strong:#CFDAD8;
+  --text:#1C2B2E;--text-muted:#5C6E72;--text-faint:#93A5A3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Poppins','Noto Kufi Arabic',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.65}
+a{color:var(--teal-d)}
+.hide{display:none!important}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* ---------- HERO ---------- */
+header.hero{position:relative;overflow:hidden;border-radius:20px;background:linear-gradient(115deg,#063D3E 0%,#00777A 50%,#00ABAB 100%);padding:32px 32px 26px;margin-top:24px;color:#fff}
+.hero-decor{position:absolute;inset:0;z-index:0;overflow:hidden;border-radius:20px;pointer-events:none}
+.hero-decor svg{position:absolute;inset-inline-start:-80px;top:-120px;width:520px;height:520px;opacity:.22}
+.hero-in{position:relative;z-index:1}
+.hero-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px;flex-wrap:wrap}
+.hero-top-left{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.hero-logo{height:22px;width:auto;display:block}
+.hero-eyebrow{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.7)}
+.hero-eyebrow-divider{width:1px;height:14px;background:rgba(255,255,255,.3)}
+.pills{display:flex;gap:8px;flex-wrap:wrap}
+.lang-pill{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:12.5px;font-weight:700;color:#fff;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.45);padding:7px 16px;border-radius:999px;cursor:pointer;transition:background .15s}
+.lang-pill:hover{background:rgba(255,255,255,.3)}
+h1{font-weight:800;font-size:clamp(24px,4vw,32px);color:#fff;margin:0 0 8px;line-height:1.35}
+.hero-byline{color:rgba(255,255,255,.85);font-size:14px;font-weight:600;margin:0 0 10px}
+.hero-desc{color:rgba(255,255,255,.88);font-size:14.5px;max-width:640px;margin:0}
+.hero-stats{display:flex;gap:0;margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.22);flex-wrap:wrap}
+.stat{padding:0 22px;border-inline-start:1px solid rgba(255,255,255,.22)}
+.stat:first-child{padding-inline-start:0;border-inline-start:0}
+.stat b{display:block;font-size:22px;font-weight:800;line-height:1.2}
+.stat span{font-size:12px;color:rgba(255,255,255,.75)}
+
+/* ---------- CARDS ---------- */
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-top:16px}
+.card h2{font-size:18px;font-weight:800;margin:0 0 6px;color:var(--navy)}
+.muted{color:var(--text-muted)}
+.lead{color:var(--text-muted);margin:0;font-size:14.5px}
+ol.steps,ul.rules{margin:8px 0 0;padding-inline-start:22px;font-size:14.5px}
+ol.steps li,ul.rules li{margin:5px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:800px){.two{grid-template-columns:1fr}}
+.two .card{margin-top:0}
+.badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 12px;font-size:12.5px;font-weight:700}
+.b-teal{background:var(--teal-tint);color:var(--teal-d)}.b-gold{background:var(--gold-tint);color:#8a6200}
+.b-red{background:var(--red-tint);color:var(--red)}.b-green{background:var(--green-tint);color:var(--green)}.b-grey{background:#EEF2F2;color:var(--text-muted)}
+
+/* ---------- FORM ---------- */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+.full{grid-column:1/-1}
+label{display:block;font-weight:600;font-size:13.5px;margin-bottom:5px;color:var(--slate)}
+input,select{width:100%;font:inherit;font-size:15px;color:var(--text);background:#fff;border:1px solid var(--line-strong);border-radius:10px;padding:10px 12px;min-height:46px}
+input:focus,select:focus{outline:2px solid var(--teal);outline-offset:0;border-color:var(--teal)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:14px}
+.chk input{width:20px;height:20px;min-height:0;margin-top:3px;accent-color:var(--teal);flex:none}
+.btn{background:var(--teal);color:#fff;border:0;border-radius:12px;padding:11px 26px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;min-height:46px;transition:background .15s}
+.btn:hover{background:var(--teal-d)}.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.ghost{background:#fff;color:var(--teal-d);border:1px solid var(--teal-mist)}
+.btn.ghost:hover{background:var(--teal-tint)}
+.btn.sm{min-height:36px;padding:5px 14px;font-size:13.5px}
+.msg{margin:14px 0 0;padding:11px 14px;border-radius:10px;font-size:14px}
+.msg.ok{background:var(--green-tint);color:var(--green)}.msg.bad{background:var(--red-tint);color:var(--red)}
+.rep{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:760px){.rep{grid-template-columns:1fr 1fr}}
+.rep label{font-weight:500;font-size:12.5px}
+
+/* ---------- STICKY BAR ---------- */
+.sticky{position:sticky;top:0;z-index:10;background:rgba(234,247,247,.92);backdrop-filter:blur(8px);padding:12px 0 10px;margin-top:8px}
+.runbar{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.timer{display:flex;align-items:center;gap:8px;font-weight:800;font-size:20px;color:var(--navy);font-variant-numeric:tabular-nums;direction:ltr}
+.timer .dot{width:9px;height:9px;border-radius:50%;background:var(--teal);animation:pulse 1.6s infinite}
+.timer.stopped .dot{background:var(--text-faint);animation:none}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.prog{flex:1;min-width:180px}
+.prog .lbl{display:flex;justify-content:space-between;font-size:12.5px;color:var(--text-muted);font-weight:600}
+.track{height:8px;background:var(--teal-tint);border-radius:999px;overflow:hidden;margin-top:4px}
+.track i{display:block;height:100%;background:linear-gradient(90deg,var(--teal-d),var(--teal));border-radius:999px;width:0;transition:width .3s}
+
+/* ---------- TABS ---------- */
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 6px;margin-top:10px;scrollbar-width:thin}
+.tab{flex:none;display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font:inherit;font-size:13.5px;font-weight:700;color:var(--slate);cursor:pointer;white-space:nowrap}
+.tab .k{width:22px;height:22px;border-radius:50%;background:var(--teal-tint);color:var(--teal-d);display:grid;place-items:center;font-size:12px}
+.tab small{font-weight:600;color:var(--text-faint);font-size:12px}
+.tab.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.tab.on .k{background:rgba(255,255,255,.25);color:#fff}.tab.on small{color:rgba(255,255,255,.85)}
+.tab.day{border-radius:12px;padding:9px 18px}.tab.day.on{background:var(--navy);border-color:var(--navy)}.tab.lock{opacity:.5;cursor:not-allowed}
+
+/* ---------- SECTION HEAD ---------- */
+.shead{display:flex;align-items:center;gap:18px}
+.ring{width:76px;height:76px;flex:none;border-radius:50%;display:grid;place-items:center;text-align:center;background:conic-gradient(var(--teal) var(--p,0%),var(--teal-tint) 0)}
+.ring>div{width:62px;height:62px;border-radius:50%;background:#fff;display:grid;place-items:center;align-content:center}
+.ring b{font-size:18px;font-weight:800;color:var(--navy);line-height:1.1}
+.ring span{font-size:11px;color:var(--text-muted)}
+.shead h2{margin:0}
+.shead p{margin:2px 0 0;font-size:14px;color:var(--text-muted)}
+.search{margin-top:14px}
+.search input{background:#fff}
+
+/* ---------- TASKS ---------- */
+.task{background:#fff;border:1px solid var(--line);border-radius:14px;margin-top:10px;padding:14px 18px;display:grid;grid-template-columns:auto 1fr auto;gap:4px 14px;align-items:start;transition:border-color .15s,background .15s}
+.task .qn{background:var(--teal-tint);color:var(--teal-d);font-weight:800;font-size:13px;border-radius:8px;padding:3px 9px;margin-top:2px;direction:ltr}
+.task .tx{font-weight:600;font-size:15px;margin:0}
+.task .ck{grid-column:2;font-size:13.5px;color:var(--text-muted);margin:0}
+.task .ck b{color:var(--slate);font-weight:600}
+.done-tog{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--text-muted);border:1px solid var(--line-strong);border-radius:999px;padding:5px 12px;cursor:pointer;background:#fff;white-space:nowrap;font-family:inherit}
+.done-tog .bx{width:16px;height:16px;border-radius:5px;border:2px solid var(--line-strong);display:grid;place-items:center;font-size:11px;color:#fff}
+.task.is-done{background:#F6FCFB;border-color:var(--teal-mist)}
+.task.is-done .done-tog{border-color:var(--teal);color:var(--teal-d)}
+.task.is-done .done-tog .bx{background:var(--teal);border-color:var(--teal)}
+.note{background:var(--gold-tint);border:1px solid #F3E2B5;color:#6b4e00;border-radius:12px;padding:10px 14px;font-size:13.5px;margin-top:12px}
+@media(max-width:640px){.task{grid-template-columns:auto 1fr}.task .done-tog{grid-column:1/-1;justify-self:start;margin-top:6px}}
+
+/* ---------- GRADER ---------- */
+table.list{width:100%;border-collapse:collapse;font-size:14px}
+table.list th{text-align:start;font-size:12.5px;color:var(--text-muted);font-weight:700;padding:8px 10px;border-bottom:1px solid var(--line-strong)}
+table.list td{border-bottom:1px solid var(--line);padding:11px 10px}
+table.list tr.row.go:hover td{background:var(--teal-tint);cursor:pointer}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.kv div{background:var(--bg);border-radius:10px;padding:9px 12px}
+.kv span{display:block;font-size:12px;color:var(--text-muted);font-weight:600}
+.kv b{word-break:break-all;font-size:14.5px}
+.copy{border:0;background:none;color:var(--teal-d);cursor:pointer;font:inherit;font-size:12.5px;font-weight:700;padding:0 4px}
+.gq{background:#fff;border:1px solid var(--line);border-radius:14px;margin-top:10px;padding:14px 18px;display:grid;grid-template-columns:auto 1fr 210px;gap:6px 14px;align-items:start}
+.gq.v1{background:#F4FBF7;border-color:#BFE3CC}.gq.v0{background:#FDF5F4;border-color:#F0C9C5}
+.gq .qn{background:var(--teal-tint);color:var(--teal-d);font-weight:800;font-size:13px;border-radius:8px;padding:3px 9px;margin-top:2px;direction:ltr}
+.gq p{margin:0}.gq .tx{font-weight:600;font-size:15px}.gq .ck{font-size:13.5px;color:var(--text-muted)}
+.gq .ans{display:inline-block;margin-top:6px;background:var(--gold-tint);color:#6b4e00;border-radius:8px;padding:3px 10px;font-size:13px}
+.tog{display:flex;gap:6px}
+.tog button{flex:1;min-height:40px;border-radius:10px;border:1px solid var(--line-strong);background:#fff;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;color:var(--slate)}
+.tog .y.on{background:var(--green);border-color:var(--green);color:#fff}
+.tog .n.on{background:var(--red);border-color:var(--red);color:#fff}
+.gq .nt{min-height:38px;font-size:13.5px;margin-top:6px;padding:6px 10px}
+@media(max-width:780px){.gq{grid-template-columns:auto 1fr}.gq .act{grid-column:1/-1}}
+.secbar{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+.dock{position:fixed;bottom:0;inset-inline:0;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(0,32,92,.06);z-index:20}
+.dock .in{max-width:1080px;margin:auto;padding:10px 24px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.dock .score{font-size:21px;font-weight:800;color:var(--navy)}
+.dock .sub{color:var(--text-muted);font-size:13px}
+.grow{flex:1}
+footer{color:var(--text-faint);font-size:12.5px;text-align:center;padding:34px 0 120px}
+.spin{color:var(--text-muted);padding:40px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div class="hero-decor"><svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#fff" stroke-width="1.2"><circle cx="150" cy="150" r="60"/><circle cx="150" cy="150" r="90"/><circle cx="150" cy="150" r="120"/><circle cx="150" cy="150" r="148"/></svg></div>
+  <div class="hero-in">
+    <div class="hero-top">
+      <div class="hero-top-left">
+        <img class="hero-logo" alt="rewaa" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAAAoCAYAAAArIw6WAAACeUlEQVR4nO2bW5aDIAyGY88sZrqaWU5nCbrCdjfOS+1QJBDIhWj5zvFhHA0pPwlBdFrXFYyZAeAWnXsAwNXakc5IdfwCAL/xyamDsFiDk6kX/UgNbAne+m8Ia49mh7/68KLYyGCPdhS97A9hj8MUHDlWAJqw9+fFnEMKrh/bMSv508oC78KljpCSwHNujpUUJHSido7VSl/cOT3lFymaIpJVLdOPZMTO2MUd8OKHJtwKOTmYUhGr0ZktEastqpeIVfEljthPiJAzssQnaqri0uROnfgpYAPsYdS+FjsBnnCLuZ/4RJyKNSb3GEo6kk5ZLWlTy6ZGOt7ZpAgrPeJbhRX94Ux7HJsmwo4HFCclFFZq0T7II71eT94XpmKrh/Ofnoqxe2vuL/oxUvFJCYX1tCw4O1LLHjR9Hyliz1QDYMtHiQ34BWCsYzlwbUr8RtQHSsTeMk5YI7nldnSymmzCUnZ0LPdjsTkI4H+gWe8FS6OxTfl4GX+mYsudFOvdnQmx1TsVYzaodrLtey6eJKr0XOQfmeKgv1AuYsIRiCuuZNGngdZuD1wgyMtGpH5MLrKmwv9r2vGG5LKn+3vF1twB4Dtx3sMci9nJ2SJd/wnCmmyTMWyqCPvV4EgPpEef9ftVObCqfQX6QNld57kq3tDudCn7FnM62dcjCCuNlgCuKnDvwmpEayiA5EMQDpxlT3JV47140voaQcq+5He9paKoqsjyHrGctBm/qiplP7R5Bf3n0k22vUesVzTWxq1CJNs8ynLHC5pRgC17Svck8Z6KPVHqdFePMEfE8pF8V6wmarPtjoilcY/+Dj9UloZis3jNKJ78swlUNYj+ABu79Qagq9U7AAAAAElFTkSuQmCC">
+        <span class="hero-eyebrow-divider"></span>
+        <span class="hero-eyebrow">Platform Practical Assessment — 2026</span>
+      </div>
+      <div class="pills">
+        <button class="lang-pill" id="modeBtn" type="button"></button>
+        <button class="lang-pill" id="langBtn" type="button"></button>
+      </div>
+    </div>
+    <h1 id="title">الاختبار العملي لمنصة رواء</h1>
+    <p class="hero-byline" data-t="byline"></p>
+    <p class="hero-desc" id="heroDesc"></p>
+    <div class="hero-stats" id="stats"></div>
+  </div>
+</header>
+
+<div id="loading" class="spin" data-t="loading">جاري التحميل…</div>
+<div id="loadErr" class="card hide"><p class="msg bad" data-t="loadErr" style="margin:0"></p></div>
+
+<!-- ======================= الموظف ======================= -->
+<section id="taker" class="hide">
+  <div id="preStart">
+    <div class="two" style="margin-top:16px">
+      <div class="card"><h2 data-t="howH"></h2><ol class="steps" id="howList"></ol></div>
+      <div class="card"><h2 data-t="rulesH"></h2><ul class="rules" id="rulesList"></ul></div>
+    </div>
+    <form class="card" id="startForm" novalidate>
+      <h2 data-t="startH"></h2>
+      <p class="lead" data-t="startP" style="margin-bottom:14px"></p>
+      <div class="grid">
+        <div><label for="sName" data-t="fName"></label><input id="sName" autocomplete="name"></div>
+        <div><label for="sTeam" data-t="fTeam"></label>
+          <select id="sTeam"><option value="" data-t="choose"></option><option value="Support" data-t="teamS"></option><option value="CSM" data-t="teamC"></option></select></div>
+        <div class="full"><label for="sEmail" data-t="fEmail"></label><input id="sEmail" type="email" dir="ltr" autocomplete="email" placeholder="name@rewaa.com"></div>
+      </div>
+      <div style="margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <button class="btn" id="startBtn" type="submit" data-t="startBtn"></button>
+        <span class="badge b-red hide" id="closedBadge" data-t="closed"></span>
+      </div>
+      <p class="msg bad hide" id="startMsg"></p>
+      <details style="margin-top:16px;border-top:1px solid var(--line);padding-top:12px">
+        <summary style="cursor:pointer;font-size:13.5px;font-weight:600;color:var(--teal-d)" data-t="resumeH"></summary>
+        <div style="display:flex;gap:10px;margin-top:10px;max-width:460px">
+          <input id="rId" dir="ltr" placeholder="PA-261124-103000-12">
+          <button class="btn ghost" id="rBtn" type="button" data-t="resumeBtn"></button>
+        </div>
+      </details>
+    </form>
+  </div>
+
+  <div id="running" class="hide">
+    <div class="sticky"><div class="runbar">
+      <div><div style="font-size:12px;font-weight:700;color:var(--text-muted)" id="clockLbl"></div>
+        <div class="timer" id="timer"><span class="dot"></span><span id="clock">00:00:00</span></div></div>
+      <div class="prog"><div class="lbl"><span data-t="progress"></span><span id="progTxt">0%</span></div><div class="track"><i id="progBar"></i></div></div>
+      <button class="btn sm" id="dayBtn" type="button"></button>
+    </div>
+    <div class="tabs" id="dayTabs"></div>
+    <div class="tabs" id="tabs" style="margin-top:2px"></div></div>
+
+    <div class="card hide" id="between" style="text-align:center">
+      <div class="ring" style="--p:50%;margin:0 auto 12px"><div><b>1/2</b></div></div>
+      <h2 data-t="betweenH"></h2>
+      <p class="lead" id="betweenP"></p>
+      <button class="btn" id="startD2" type="button" data-t="startD2" style="margin-top:14px"></button>
+    </div>
+    <p class="lead" style="margin-top:10px;font-size:12.5px" id="idLine"></p>
+
+    <div class="card" id="secHead"></div>
+    <div class="search"><input id="search" type="search"></div>
+    <div id="tasks"></div>
+
+    <form class="card" id="subForm" novalidate style="margin-top:28px">
+      <h2 data-t="subH"></h2>
+      <p class="lead" data-t="subP" style="margin-bottom:14px"></p>
+      <div class="grid">
+        <div><label for="fEmail" data-t="fEmail"></label><input id="fEmail" type="email" dir="ltr" autocomplete="email"></div>
+        <div><label for="fFinished" data-t="fFinished"></label><input id="fFinished" type="date" dir="ltr"></div>
+        <div><label for="fLogin" data-t="fLogin"></label><input id="fLogin" type="email" dir="ltr"></div>
+        <div><label for="fPass" data-t="fPass"></label><input id="fPass" type="text" dir="ltr" autocomplete="off"></div>
+        <div class="full"><label for="fSkipped" data-t="fSkipped"></label><input id="fSkipped" dir="ltr" placeholder="Q18, Q35"></div>
+        <div class="full"><label data-t="fReports"></label>
+          <div class="rep">
+            <div><label for="r82" data-t="r82"></label><input id="r82" inputmode="decimal" dir="ltr"></div>
+            <div><label for="r83" data-t="r83"></label><input id="r83" inputmode="decimal" dir="ltr"></div>
+            <div><label for="r84" data-t="r84"></label><input id="r84" inputmode="decimal" dir="ltr"></div>
+            <div><label for="r85" data-t="r85"></label><input id="r85" inputmode="decimal" dir="ltr"></div>
+          </div></div>
+        <label class="chk full"><input type="checkbox" id="fConfirm"><span data-t="fConfirm"></span></label>
+      </div>
+      <div style="margin-top:16px"><button class="btn" id="subBtn" type="submit" data-t="send"></button></div>
+      <p class="msg hide" id="subMsg"></p>
+    </form>
+  </div>
+
+  <div id="finished" class="card hide" style="text-align:center;padding:40px 24px">
+    <div class="ring" style="--p:100%;margin:0 auto 14px"><div><b>✓</b></div></div>
+    <h2 data-t="doneH"></h2>
+    <p class="lead" id="doneP"></p>
+  </div>
+</section>
+
+<!-- ======================= المصحح ======================= -->
+<section id="grader" class="hide">
+  <div class="card" id="gLogin">
+    <h2 data-t="gLoginH"></h2>
+    <p class="lead" data-t="gLoginP"></p>
+    <div style="display:flex;gap:10px;margin-top:14px;max-width:440px">
+      <input id="gCode" type="password" inputmode="numeric" dir="ltr" autocomplete="off" placeholder="••••••">
+      <button class="btn" id="gGo" type="button" data-t="open"></button>
+    </div>
+    <p class="msg bad hide" id="gErr"></p>
+  </div>
+
+  <div id="gList" class="card hide">
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px">
+      <h2 style="margin:0" class="grow" data-t="listH"></h2>
+      <button class="btn ghost sm" id="gRefresh" type="button" data-t="refresh"></button>
+    </div>
+    <div style="overflow-x:auto"><table class="list"><thead><tr>
+      <th data-t="thName"></th><th data-t="thTeam"></th><th data-t="thAt"></th><th data-t="thDur"></th><th data-t="thStatus"></th><th data-t="thScore"></th>
+    </tr></thead><tbody id="gRows"></tbody></table></div>
+    <p class="lead hide" id="gEmpty" data-t="empty" style="padding:18px 0;text-align:center"></p>
+  </div>
+
+  <div id="gOne" class="hide">
+    <div class="card">
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
+        <button class="btn ghost sm" id="gBack" type="button" data-t="back"></button>
+        <h2 style="margin:0" class="grow" id="oName"></h2>
+        <span class="badge b-teal" id="oTeam"></span>
+      </div>
+      <div class="kv" id="oInfo"></div>
+      <div class="grid" style="margin-top:14px">
+        <div><label for="oGrader" data-t="grName"></label><input id="oGrader"></div>
+        <div><label for="oGeneral" data-t="general"></label><input id="oGeneral"></div>
+      </div>
+    </div>
+    <div class="tabs" id="gTabs" style="margin-top:14px"></div>
+    <div id="gSecs"></div>
+  </div>
+</section>
+
+<footer>Rewaa · QA &amp; Training</footer>
+</div>
+
+<div class="dock hide" id="dock"><div class="in">
+  <div><div class="score" id="dScore">0 / 85</div><div class="sub" id="dSub"></div></div>
+  <div class="grow"></div>
+  <span class="sub" id="dSaved"></span>
+  <button class="btn" id="gSave" type="button" data-t="save"></button>
+</div></div>
+
+<script>
+{
+/* رابط الـ Web App من Apps Script */
+const API='PASTE_WEB_APP_URL_HERE';
+
+const T={
+ar:{grader:'للمصحح',taker:'صفحة الموظف',lang:'English',loading:'جاري التحميل…',loadErr:'تعذّر تحميل الاختبار. تأكد من الإنترنت وحدّث الصفحة.',
+byline:'إعداد: قسم الجودة والتدريب | رواء',
+desc:'تنفّذ 85 مهمة عملية في حساب تجريبي جديد باسمك على منصة رواء، ونصحح بالدخول على حسابك ومراجعة كل مهمة.',
+stTasks:'مهمة',stSecs:'أقسام',stPts:'درجة',stDeadline:'آخر موعد',stPass:'نسبة النجاح',
+howH:'طريقة الاختبار',
+how:['<b>سجّل حساباً جديداً</b> على <a href="https://platform.rewaatech.com/register" target="_blank" rel="noopener">platform.rewaatech.com/register</a> بإيميل يخصك وما استخدمته في رواء قبل. تقدر تتبع مقال <a href="https://help.rewaa.com/en/create-your-account-on-the-riwaa-platform-in-just-4-steps" target="_blank" rel="noopener">إنشاء حسابك في 4 خطوات</a>.',
+'<b>حل الأسئلة بالترتيب، سؤال سؤال.</b> احفظ كل سؤال قبل اللي بعده، لأن أسئلة كثيرة تستخدم سجلات من أسئلة قبلها.',
+'<b>سمِّ كل سجل برقم سؤاله</b>، مثل «Q12 – Water 600ml». السجل اللي ما فيه رقم السؤال ما ينحسب.',
+'<b>لا تحذف أي شي أنشأته</b>، إلا إذا طلب السؤال ذلك.',
+'<b>اترك اللي ما تقدر تسويه</b> وانتقل للي بعده، واكتب أرقامه في نموذج التسليم.',
+'<b>أسئلة التقارير (Q82 إلى Q85)</b> تطلب رقماً تكتبه في نموذج التسليم.',
+'<b>سلّم من النموذج</b> في آخر اليوم الثاني، وبعد التسليم لا تدخل الحساب ولا تغيّر فيه شي.'],
+rulesH:'القواعد',
+rules:['<b>المسموح:</b> مركز مساعدة رواء فقط، <a href="https://help.rewaa.com/" target="_blank" rel="noopener">help.rewaa.com</a>.',
+'<b>الممنوع:</b> الزملاء، وفريق الدعم أو نجاح العملاء، وSlack، والمستندات الداخلية، وأدوات الذكاء الاصطناعي، وأي حساب تاجر.',
+'الفترة التجريبية المجانية فقط. لا تشترك ولا تدفع، ولا تربط متجراً إلكترونياً أو جهاز دفع حقيقي.',
+'بيانات تجريبية فقط. لا أسماء عملاء حقيقية ولا أرقام جوال ولا أرقام ضريبية حقيقية.',
+'استخدم كلمة مرور خاصة بهذا الحساب، لا تستعملها في أي مكان ثاني.',
+'<b>الاختبار على يومين، ولكل يوم تايمر.</b> يبدأ لما تضغط «ابدأ»، ويوقف لما تنهي اليوم أو تسلّم. لو قفلت الصفحة ورجعت لها يكمل من نفس الوقت.'],
+resumeH:'بدأت الاختبار قبل أو على جهاز ثاني؟ اكتب رقم اختبارك',resumeBtn:'استكمال',resumeErr:'ما لقينا هذا الرقم.',
+day1:'اليوم الأول',day2:'اليوم الثاني',dayRange:(a,b)=>'Q'+a+'–Q'+b,locked:'يفتح بعد ما تنهي اليوم الأول',
+endDay1:'إنهاء اليوم الأول',endDay1Q:'متأكد إنك خلصت اليوم الأول؟ التايمر بيوقف، وما تقدر ترجع له.',
+betweenH:'أنهيت اليوم الأول',betweenP:t=>'مدة اليوم الأول: '+t+'. لما تجهز لليوم الثاني اضغط الزر تحت، ويبدأ تايمره.',startD2:'ابدأ اليوم الثاني',
+idLine:id=>'رقم اختبارك: <b><bdi dir="ltr">'+id+'</bdi></b>. احتفظ فيه لو بتكمل من جهاز ثاني.',clockOf:d=>'تايمر '+d,
+startH:'ابدأ الاختبار',startP:'اكتب بياناتك واضغط «ابدأ الاختبار». يبدأ التايمر وتظهر لك المهام.',startBtn:'ابدأ الاختبار',starting:'جاري البدء…',
+startNeed:'اكتب اسمك الكامل واختر فريقك.',closed:'التسليم مقفل حالياً',
+fName:'الاسم الكامل',fTeam:'الفريق',choose:'اختر',teamS:'الدعم الفني',teamC:'نجاح العملاء',fEmail:'إيميلك في رواء',
+progress:'نسبة الإنجاز',finishBtn:'خلصت؟ سلّم',check:'ما نتحقق منه:',done:'تم',search:'ابحث عن مهمة…',
+secP:(a,b,n)=>'الأسئلة Q'+a+' إلى Q'+b+' · '+n+' مهمة',ringDone:'منجز',
+subH:'تسليم الاختبار',subP:'بعد ما تخلص كل الأسئلة، اكتب إيميلك وبيانات الحساب التجريبي واضغط تسليم. التايمر يوقف عند التسليم.',
+fFinished:'تاريخ إنهاء الاختبار',fLogin:'إيميل الدخول للحساب التجريبي',fPass:'كلمة مرور الحساب التجريبي',
+fSkipped:'الأسئلة المتروكة (انكتبت لك من المهام اللي ما علّمت عليها، وتقدر تعدّلها)',fReports:'إجابات أسئلة التقارير',
+r82:'Q82 – مبيعات فرع الرياض (ريال)',r83:'Q83 – كمية Q12 في Main Warehouse',r84:'Q84 – المستحق للمورد Q40 (ريال)',r85:'Q85 – رصيد المحفظة (ريال)',
+fConfirm:'أؤكد إني ما راح أدخل الحساب التجريبي أو أغيّر فيه شي بعد التسليم.',send:'تسليم الاختبار',sending:'جاري التسليم…',
+needAll:'اكتب إيميلك وإيميل الدخول وكلمة المرور، وأكّد آخر خانة.',subErr:'ما قدرنا نسلّم. حاول مرة ثانية.',subClosed:'التسليم مقفل حالياً.',
+doneH:'تم تسليم الاختبار',doneP:(id,t)=>'رقم التسليم: \u2066'+id+'\u2069'+(t?' · المدة: '+t:'')+'. لا تدخل الحساب التجريبي بعد الحين.',
+gLoginH:'شاشة التصحيح',gLoginP:'اكتب رمز المصحح لفتح التسليمات.',open:'فتح',badCode:'الرمز غير صحيح.',netErr:'تعذّر الاتصال. حاول مرة ثانية.',
+listH:'التسليمات',refresh:'تحديث',thName:'الموظف',thTeam:'الفريق',thAt:'وقت التسليم',thDur:'المدة',thStatus:'الحالة',thScore:'الدرجة',empty:'ما فيه تسليمات للحين.',
+back:'رجوع',grName:'اسم المصحح',general:'ملاحظة عامة',
+iLogin:'إيميل الدخول',iPass:'كلمة المرور',iEmail:'إيميل الموظف',iFinished:'تاريخ الإنهاء',iSkipped:'الأسئلة المتروكة',iDur:'المدة',iId:'رقم التسليم',none:'لا يوجد',copy:'نسخ',copied:'تم النسخ',
+yes:'✓ صح',no:'✗ خطأ',note:'ملاحظة (اختياري)',submitted:'إجابة الموظف: ',skippedTag:'تركه الموظف',allYes:'الباقي صح',clear:'مسح القسم',
+save:'حفظ الدرجات',saving:'جاري الحفظ…',saved:t=>'انحفظ '+t,saveErr:'ما انحفظت الدرجات. حاول مرة ثانية.',
+graded:(g,n)=>'صُحح '+g+' من '+n,teamName:v=>v==='Support'?'الدعم الفني':v==='CSM'?'نجاح العملاء':v,unsaved:'فيه تعديلات ما انحفظت. تبي تطلع؟',
+mins:m=>{m=+m;if(!m&&m!==0)return '';const h=Math.floor(m/60),r=Math.round(m%60);return h?h+' س '+r+' د':r+' د'}},
+en:{grader:'Grader',taker:'Employee page',lang:'عربي',loading:'Loading…',loadErr:'Could not load the assessment. Check your connection and refresh.',
+byline:'Prepared by: Quality & Training | Rewaa',
+desc:'You complete 85 hands-on tasks in a new Rewaa trial account of your own. We grade by logging in to that account and checking each task.',
+stTasks:'tasks',stSecs:'sections',stPts:'points',stDeadline:'deadline',stPass:'pass mark',
+howH:'How the assessment works',
+how:['<b>Register a new account</b> at <a href="https://platform.rewaatech.com/register" target="_blank" rel="noopener">platform.rewaatech.com/register</a> using an email you own and have not used on Rewaa before. Follow <a href="https://help.rewaa.com/en/create-your-account-on-the-riwaa-platform-in-just-4-steps" target="_blank" rel="noopener">Create your account in 4 steps</a>.',
+'<b>Do the questions in order, one at a time.</b> Finish and save each question before the next. Later questions use records from earlier ones.',
+'<b>Name every record with its question number</b>, for example "Q12 – Water 600ml". Records without the Q number are not graded.',
+'<b>Do not delete anything you create</b>, unless the question asks you to.',
+'<b>Skip what you cannot do.</b> Move on and list the skipped numbers in the submission form.',
+'<b>Report questions (Q82–Q85)</b> ask for a number you enter in the submission form.',
+'<b>Submit with the form</b> at the end of Day 2. After you submit, do not log in or change anything.'],
+rulesH:'Rules',
+rules:['<b>Allowed:</b> the Rewaa Help Center only, <a href="https://help.rewaa.com/" target="_blank" rel="noopener">help.rewaa.com</a>.',
+'<b>Not allowed:</b> colleagues, Support or CSM teams, Slack, internal documents, AI tools, or any merchant account.',
+'Free trial only. Do not subscribe, pay, or connect a real online store or payment terminal.',
+'Test data only. No real customer names, phone numbers or VAT numbers.',
+'Use a password made only for this account, not one you use anywhere else.',
+'<b>The assessment runs over two days, each with its own timer.</b> It starts when you press Start and stops when you end the day or submit. If you close the page and come back, it keeps counting.'],
+resumeH:'Started earlier or on another device? Enter your assessment number',resumeBtn:'Resume',resumeErr:'Number not found.',
+day1:'Day 1',day2:'Day 2',dayRange:(a,b)=>'Q'+a+'–Q'+b,locked:'Opens after you end Day 1',
+endDay1:'End Day 1',endDay1Q:'Have you finished Day 1? The timer will stop and you cannot go back to it.',
+betweenH:'Day 1 finished',betweenP:t=>'Day 1 time: '+t+'. When you are ready for Day 2, press the button below to start its timer.',startD2:'Start Day 2',
+idLine:id=>'Your assessment number: <b><bdi dir="ltr">'+id+'</bdi></b>. Keep it if you continue on another device.',clockOf:d=>d+' timer',
+startH:'Start the assessment',startP:'Enter your details and press "Start the assessment". The timer starts and the tasks appear.',startBtn:'Start the assessment',starting:'Starting…',
+startNeed:'Enter your full name and choose your team.',closed:'Submissions are closed',
+fName:'Full name',fTeam:'Team',choose:'Choose',teamS:'Technical Support',teamC:'Customer Success',fEmail:'Your Rewaa email',
+progress:'Progress',finishBtn:'Done? Submit',check:'What we check:',done:'Done',search:'Search tasks…',
+secP:(a,b,n)=>'Questions Q'+a+'–Q'+b+' · '+n+' tasks',ringDone:'done',
+subH:'Submit the assessment',subP:'When you finish all questions, enter your email and the trial account login, then submit. The timer stops when you submit.',
+fFinished:'Date completed',fLogin:'Trial account login email',fPass:'Trial account password',
+fSkipped:'Skipped questions (filled from the tasks you did not tick; you can edit it)',fReports:'Report answers',
+r82:'Q82 – Riyadh Branch sales (SAR)',r83:'Q83 – Q12 quantity, Main Warehouse',r84:'Q84 – Owed to supplier Q40 (SAR)',r85:'Q85 – Wallet balance (SAR)',
+fConfirm:'I confirm I will not log in to the trial account or change anything after submitting.',send:'Submit assessment',sending:'Submitting…',
+needAll:'Enter your email, the login email and password, and tick the last box.',subErr:'Could not submit. Please try again.',subClosed:'Submissions are closed.',
+doneH:'Assessment submitted',doneP:(id,t)=>'Submission number: '+id+(t?' · Time: '+t:'')+'. Do not log in to the trial account from now on.',
+gLoginH:'Grading',gLoginP:'Enter the grader code to open submissions.',open:'Open',badCode:'Wrong code.',netErr:'Connection failed. Please try again.',
+listH:'Submissions',refresh:'Refresh',thName:'Employee',thTeam:'Team',thAt:'Submitted',thDur:'Time',thStatus:'Status',thScore:'Score',empty:'No submissions yet.',
+back:'Back',grName:'Grader name',general:'General note',
+iLogin:'Login email',iPass:'Password',iEmail:'Employee email',iFinished:'Date completed',iSkipped:'Skipped questions',iDur:'Time taken',iId:'Submission number',none:'None',copy:'Copy',copied:'Copied',
+yes:'✓ Pass',no:'✗ Fail',note:'Note (optional)',submitted:'Employee answer: ',skippedTag:'Skipped by employee',allYes:'Rest pass',clear:'Clear section',
+save:'Save grades',saving:'Saving…',saved:t=>'Saved '+t,saveErr:'Grades were not saved. Please try again.',
+graded:(g,n)=>g+' of '+n+' graded',teamName:v=>v==='Support'?'Technical Support':v==='CSM'?'Customer Success':v,unsaved:'You have unsaved changes. Leave anyway?',
+mins:m=>{m=+m;if(!m&&m!==0)return '';const h=Math.floor(m/60),r=Math.round(m%60);return h?h+'h '+r+'m':r+'m'}}
+};
+const STATUS={'يحل الآن':['b-teal','In progress'],'بانتظار التصحيح':['b-gold','Waiting'],'قيد التصحيح':['b-grey','Grading'],'تم التصحيح':['b-green','Graded']};
+const SECN={A:'Account setup & settings',B:'Products',C:'Inventory & locations',D:'Suppliers & purchasing',E:'Customers & promotions',F:'POS, sales & returns',G:'Users, expenses & reports'};
+const SECNOTE={F:{ar:'استخدم الصندوق Q8 Register 2 في فرع الرياض لكل عمليات البيع في هذا القسم.',en:'Use Q8 Register 2 in Riyadh Branch for every sale in this section.'},
+G:{ar:'الأسئلة Q82 إلى Q85 تحتاج رقماً من التقارير. اكتب كل إجابة في نموذج التسليم.',en:'Q82–Q85 need a number from a report. Enter each answer in the submission form.'}};
+const REP={82:'r82',83:'r83',84:'r84',85:'r85'};
+const KEY='rewaa_pa_v1';
+
+const $=id=>document.getElementById(id);
+const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+let lang=store.get('pa_lang','ar');
+let mode=location.hash==='#grader'?'grader':'taker';
+let D=null,S=store.get(KEY,null),tab='A',q='',tick=null;
+let code='',items=[],cur=null,marks={},notes={},dirty=false,gtab='A';
+const L=()=>T[lang];
+const post=b=>fetch(API,{method:'POST',body:JSON.stringify(b)}).then(r=>r.json());
+const secs=()=>{const m={};D.questions.forEach(x=>{(m[x.s]=m[x.s]||{s:x.s,sa:x.sa,qs:[]}).qs.push(x)});return Object.values(m)};
+const qt=x=>lang==='ar'?x.ta||x.t:x.t||x.ta, qc=x=>lang==='ar'?x.ca||x.c:x.c||x.ca;
+const sname=s=>lang==='ar'?s.sa:(SECN[s.s]||s.sa);
+const pad=n=>String(n).padStart(2,'0');
+const hms=ms=>{const s=Math.max(0,Math.floor(ms/1000));return pad(Math.floor(s/3600))+':'+pad(Math.floor(s%3600/60))+':'+pad(s%60)};
+
+/* ---------- عام ---------- */
+function applyLang(){
+  document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  $('langBtn').textContent=L().lang;$('modeBtn').textContent=mode==='grader'?L().taker:L().grader;
+  document.querySelectorAll('[data-t]').forEach(el=>{const v=L()[el.dataset.t];if(typeof v==='string')el.textContent=v});
+  $('search').placeholder=L().search;
+  if(!D)return;
+  $('heroDesc').textContent=L().desc;
+  const st=[[D.questions.length,L().stTasks],[secs().length,L().stSecs],[D.questions.length,L().stPts]];
+  if(D.pass)st.push([D.pass,L().stPass]);if(D.deadline)st.push([D.deadline,L().stDeadline]);
+  $('stats').innerHTML=st.map(x=>`<div class="stat"><b>${esc(x[0])}</b><span>${esc(x[1])}</span></div>`).join('');
+  renderTaker();
+  if(mode==='grader'){if(cur)renderOne();else if(items.length)renderList()}
+}
+function show(){
+  $('taker').classList.toggle('hide',mode!=='taker'||!D);
+  $('grader').classList.toggle('hide',mode!=='grader'||!D);
+  $('dock').classList.toggle('hide',!(mode==='grader'&&cur));
+  $('modeBtn').textContent=mode==='grader'?L().taker:L().grader;
+}
+$('langBtn').onclick=()=>{lang=lang==='ar'?'en':'ar';store.set('pa_lang',lang);applyLang()};
+$('modeBtn').onclick=()=>{if(dirty&&!confirm(L().unsaved))return;dirty=false;mode=mode==='grader'?'taker':'grader';history.replaceState(null,'',mode==='grader'?'#grader':location.pathname);show();window.scrollTo(0,0)};
+window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});
+
+fetch(API).then(r=>r.json()).then(d=>{
+  if(!d.ok||!d.questions||!d.questions.length)throw 0;
+  D=d;$('loading').classList.add('hide');
+  if(d.title){$('title').textContent=d.title;document.title=d.title+' | rewaa'}
+  if(S&&S.done!==true&&S.day!==undefined)vday=S.day===1?1:2;
+  applyLang();show();syncState();
+}).catch(()=>{$('loading').classList.add('hide');$('loadErr').classList.remove('hide')});
+
+/* ---------- الموظف ---------- */
+const dayOf=n=>n<=D.day1Last?1:2;
+let vday=1;
+function renderTaker(){
+  $('howList').innerHTML=L().how.map(x=>'<li>'+x+'</li>').join('');
+  $('rulesList').innerHTML=L().rules.map(x=>'<li>'+x+'</li>').join('');
+  $('closedBadge').classList.toggle('hide',D.open);$('startBtn').disabled=!D.open;
+  const stage=!S?'pre':S.done===true?'done':'run';
+  $('preStart').classList.toggle('hide',stage!=='pre');
+  $('running').classList.toggle('hide',stage!=='run');
+  $('finished').classList.toggle('hide',stage!=='done');
+  if(stage==='run'){
+    if(vday===2&&S.day===1)vday=1;
+    $('idLine').innerHTML=L().idLine(esc(S.id));
+    renderRun();startTick();
+    if(!$('fEmail').value)$('fEmail').value=S.email||'';
+    if(!$('fFinished').value)$('fFinished').value=new Date().toISOString().slice(0,10)}
+  if(stage==='done')$('doneP').textContent=L().doneP(S.id,S.mins!==''&&S.mins!=null?L().mins(S.mins):'');
+}
+function renderRun(){
+  const between=S.day==='between';
+  $('between').classList.toggle('hide',!(between&&vday===2));
+  $('betweenP').textContent=L().betweenP(hms(S.day1Ms||0));
+  const showTasks=!(between&&vday===2);
+  ['secHead','tasks'].forEach(id=>$(id).classList.toggle('hide',!showTasks));
+  $('search').parentNode.classList.toggle('hide',!showTasks);
+  $('subForm').classList.toggle('hide',!(S.day===2&&vday===2));
+  $('tabs').classList.toggle('hide',!showTasks);
+  const b=$('dayBtn');
+  if(S.day===1){b.textContent=L().endDay1;b.classList.remove('hide')}
+  else if(S.day===2){b.textContent=L().finishBtn;b.classList.remove('hide')}
+  else b.classList.add('hide');
+  $('clockLbl').textContent=L().clockOf(S.day===2?L().day2:L().day1);
+  $('timer').classList.toggle('stopped',between);
+  $('clock').textContent=between?hms(S.day1Ms||0):hms(Date.now()-S.startedAt);
+  renderDayTabs();
+  if(showTasks){const ss=daySecs();if(!ss.find(x=>x.s===tab))tab=ss[0].s;renderTabs();renderSection()}
+  progress();
+}
+function daySecs(){return secs().map(s=>({...s,qs:s.qs.filter(x=>dayOf(x.n)===vday)})).filter(s=>s.qs.length)}
+function renderDayTabs(){
+  const n1=D.questions.filter(x=>dayOf(x.n)===1),n2=D.questions.filter(x=>dayOf(x.n)===2);
+  const lock2=S.day===1;
+  const t=(d,list,lk)=>`<button type="button" class="tab day ${vday===d?'on':''} ${lk?'lock':''}" data-d="${d}" ${lk?'title="'+esc(L().locked)+'"':''}>${d===1?L().day1:L().day2}<small>${L().dayRange(list[0].n,list[list.length-1].n)} · ${doneCount(list)}/${list.length}${lk?' 🔒':''}</small></button>`;
+  $('dayTabs').innerHTML=t(1,n1,false)+(n2.length?t(2,n2,lock2):'');
+  $('dayTabs').querySelectorAll('.tab').forEach(b=>b.onclick=()=>{if(b.classList.contains('lock'))return;vday=+b.dataset.d;q='';$('search').value='';renderRun()});
+}
+$('startForm').addEventListener('submit',async e=>{
+  e.preventDefault();const m=$('startMsg');m.classList.add('hide');
+  const name=$('sName').value.trim(),team=$('sTeam').value,email=$('sEmail').value.trim();
+  if(name.length<3||!team){m.textContent=L().startNeed;m.classList.remove('hide');return}
+  const b=$('startBtn');b.disabled=true;b.textContent=L().starting;
+  try{const d=await post({action:'start',name,team,email});if(!d.ok)throw d.error;
+    S={id:d.id,day:1,startedAt:d.startedAt,day1Ms:0,name,team,email,done:{}};store.set(KEY,S);vday=1;tab='A';renderTaker();window.scrollTo(0,0)}
+  catch(err){m.textContent=err==='closed'?L().subClosed:L().netErr;m.classList.remove('hide')}
+  finally{b.disabled=false;b.textContent=L().startBtn}
+});
+function applyState(d){
+  if(d.day==='submitted'){S={id:d.id,done:true,mins:''};store.set(KEY,S);return}
+  const keep=S&&S.id===d.id&&S.done&&S.done!==true?S.done:{};
+  S={id:d.id,day:d.day,startedAt:d.startedAt,day1Ms:d.day1Ms,name:d.name,team:d.team,email:d.email,done:keep};store.set(KEY,S);
+  vday=d.day===1?1:2;
+}
+$('rBtn').onclick=async()=>{
+  const id=$('rId').value.trim(),m=$('startMsg');m.classList.add('hide');if(!id)return;
+  try{const d=await post({action:'resume',id});if(!d.ok)throw d.error;applyState(d);renderTaker();window.scrollTo(0,0)}
+  catch(err){m.textContent=err==='not_found'?L().resumeErr:L().netErr;m.classList.remove('hide')}
+};
+function startTick(){if(tick)return;const f=()=>{if(!S||S.done===true)return;
+  $('clock').textContent=S.day==='between'?hms(S.day1Ms||0):hms(Date.now()-S.startedAt)};f();tick=setInterval(f,1000)}
+function doneCount(list){return list.filter(x=>S.done[x.n]).length}
+function progress(){
+  const n=D.questions.length,d=doneCount(D.questions),p=Math.round(d*100/n);
+  $('progTxt').textContent=d+' / '+n+' · '+p+'%';$('progBar').style.width=p+'%';
+}
+function renderTabs(){
+  $('tabs').innerHTML=daySecs().map(s=>`<button type="button" class="tab ${s.s===tab?'on':''}" data-s="${s.s}"><span class="k">${s.s}</span>${esc(sname(s))}<small>${doneCount(s.qs)}/${s.qs.length}</small></button>`).join('');
+  $('tabs').querySelectorAll('.tab').forEach(b=>b.onclick=()=>{tab=b.dataset.s;q='';$('search').value='';renderTabs();renderSection();$('secHead').scrollIntoView({behavior:'smooth',block:'start'})});
+}
+function renderSection(){
+  const s=daySecs().find(x=>x.s===tab);if(!s)return;
+  const pool=D.questions.filter(x=>dayOf(x.n)===vday);
+  const list=q?pool.filter(x=>(qt(x)+' '+qc(x)+' Q'+x.n).toLowerCase().includes(q)):s.qs;
+  const d=doneCount(s.qs),p=Math.round(d*100/s.qs.length);
+  $('secHead').innerHTML=q?`<div class="shead"><div><h2>«${esc(q)}»</h2><p>${list.length}</p></div></div>`:
+    `<div class="shead"><div class="ring" style="--p:${p}%"><div><b>${p}%</b><span>${L().ringDone}</span></div></div>
+     <div><h2>${s.s} · ${esc(sname(s))}</h2><p>${L().secP(s.qs[0].n,s.qs[s.qs.length-1].n,s.qs.length)}</p></div></div>
+     ${SECNOTE[s.s]?`<div class="note">${SECNOTE[s.s][lang]}</div>`:''}`;
+  const ro=S.day==='between'||(S.day===2&&vday===1&&false);
+  $('tasks').innerHTML=list.map(x=>`<div class="task ${S.done[x.n]?'is-done':''}" id="t${x.n}">
+    <span class="qn">Q${x.n}</span><p class="tx">${esc(qt(x))}</p>
+    <button type="button" class="done-tog" data-n="${x.n}" ${ro?'disabled':''}><span class="bx">✓</span>${L().done}</button>
+    <p class="ck"><b>${L().check}</b> ${esc(qc(x))}</p></div>`).join('');
+  $('tasks').querySelectorAll('.done-tog').forEach(b=>b.onclick=()=>{const n=b.dataset.n;if(S.done[n])delete S.done[n];else S.done[n]=1;store.set(KEY,S);
+    $('t'+n).classList.toggle('is-done',!!S.done[n]);progress();renderTabs();renderDayTabs();if(!q){const sc=window.scrollY;renderSection();window.scrollTo(0,sc)}});
+}
+$('search').addEventListener('input',e=>{q=e.target.value.trim().toLowerCase();renderSection()});
+$('dayBtn').onclick=async()=>{
+  if(S.day===1){
+    if(!confirm(L().endDay1Q))return;
+    const b=$('dayBtn');b.disabled=true;
+    try{const d=await post({action:'endDay1',id:S.id});if(!d.ok)throw 0;applyState(d);vday=2;renderTaker();window.scrollTo(0,0)}
+    catch(e){alert(L().netErr)}finally{b.disabled=false}
+  }else if(S.day===2){
+    const sk=D.questions.filter(x=>!S.done[x.n]).map(x=>'Q'+x.n);
+    if(!$('fSkipped').value)$('fSkipped').value=sk.join(', ');
+    vday=2;renderRun();$('subForm').scrollIntoView({behavior:'smooth'});
+  }
+};
+$('startD2').onclick=async()=>{
+  const b=$('startD2');b.disabled=true;
+  try{const d=await post({action:'startDay2',id:S.id});if(!d.ok)throw 0;applyState(d);vday=2;renderTaker();window.scrollTo(0,0)}
+  catch(e){alert(L().netErr)}finally{b.disabled=false}
+};
+$('subForm').addEventListener('submit',async e=>{
+  e.preventDefault();const m=$('subMsg');m.className='msg hide';const v=id=>$(id).value.trim();
+  if(!v('fEmail')||!v('fLogin')||!$('fPass').value||!$('fConfirm').checked){m.textContent=L().needAll;m.className='msg bad';return}
+  const b=$('subBtn');b.disabled=true;b.textContent=L().sending;
+  try{const d=await post({action:'submit',id:S.id,name:S.name,team:S.team,email:v('fEmail'),login:v('fLogin'),password:$('fPass').value,
+      finished:v('fFinished'),skipped:v('fSkipped'),r82:v('r82'),r83:v('r83'),r84:v('r84'),r85:v('r85')});
+    if(!d.ok)throw d.error;
+    clearInterval(tick);tick=null;S={id:d.id,mins:d.minutes,done:true};store.set(KEY,S);renderTaker();window.scrollTo(0,0)}
+  catch(err){m.textContent=err==='closed'?L().subClosed:L().subErr;m.className='msg bad'}
+  finally{b.disabled=false;b.textContent=L().send}
+});
+function syncState(){if(!S||S.done===true||!S.id)return;
+  post({action:'resume',id:S.id}).then(d=>{if(d.ok){const was=JSON.stringify([S.day,S.startedAt]);applyState(d);if(JSON.stringify([S.day,S.startedAt])!==was||d.day==='submitted')renderTaker()}}).catch(()=>{})}
+
+/* ---------- المصحح ---------- */
+async function login(){
+  const e=$('gErr');e.classList.add('hide');code=$('gCode').value.trim();if(!code)return;
+  $('gGo').disabled=true;
+  try{const d=await post({action:'list',code});if(!d.ok)throw d.error;items=d.items;
+    try{sessionStorage.setItem('pa_code',code)}catch(x){}
+    $('gLogin').classList.add('hide');$('gList').classList.remove('hide');renderList()}
+  catch(err){e.textContent=err==='code'?L().badCode:L().netErr;e.classList.remove('hide')}
+  finally{$('gGo').disabled=false}
+}
+$('gGo').onclick=login;$('gCode').addEventListener('keydown',e=>{if(e.key==='Enter')login()});
+try{const c=sessionStorage.getItem('pa_code');if(c)$('gCode').value=c}catch(e){}
+$('gRefresh').onclick=async()=>{try{const d=await post({action:'list',code});if(d.ok){items=d.items;renderList()}}catch(e){}};
+const stBadge=st=>{const s=STATUS[st]||['b-grey',st];return `<span class="badge ${s[0]}">${esc(lang==='ar'?st:s[1])}</span>`};
+function renderList(){
+  $('gEmpty').classList.toggle('hide',items.length>0);
+  $('gRows').innerHTML=items.map((it,i)=>{const live=it.status==='يحل الآن';
+    return `<tr class="row ${live?'':'go'}" data-i="${i}"><td><b>${esc(it.name)}</b></td><td>${esc(L().teamName(it.team))}</td>
+    <td dir="ltr" style="text-align:start">${esc(it.at||(live?it.started:''))}</td><td>${esc(L().mins(it.minutes))||'–'}</td><td>${stBadge(it.status)}</td>
+    <td>${it.graded?esc(it.total)+' / 85'+(it.pct?' · '+esc(it.pct):''):'–'}</td></tr>`}).join('');
+  $('gRows').querySelectorAll('tr.go').forEach(tr=>tr.onclick=()=>openOne(items[+tr.dataset.i]));
+}
+async function openOne(it){
+  cur=it;marks={};notes={};dirty=false;gtab='A';
+  $('gList').classList.add('hide');$('gOne').classList.remove('hide');$('gSecs').innerHTML='<div class="spin">'+L().loading+'</div>';
+  show();window.scrollTo(0,0);
+  try{const d=await post({action:'load',code,id:it.id});if(!d.ok)throw 0;
+    Object.assign(marks,d.marks);Object.assign(notes,d.notes);
+    $('oGrader').value=d.grader||store.get('pa_grader','');$('oGeneral').value=d.general||'';
+    if(!Object.keys(d.marks).length)skippedList().forEach(n=>{marks[n]=0});
+  }catch(e){}
+  renderOne();
+}
+function skippedList(){return ((cur.skipped||'').match(/\d+/g)||[]).map(Number).filter(n=>n>=1&&n<=85)}
+$('gBack').onclick=()=>{if(dirty&&!confirm(L().unsaved))return;dirty=false;cur=null;$('gOne').classList.add('hide');$('gList').classList.remove('hide');show();$('gRefresh').onclick()};
+const box=(k,v,cp)=>`<div><span>${L()[k]}</span><b dir="ltr">${esc(v||L().none)}</b>${cp&&v?` <button class="copy" type="button" data-copy="${esc(v)}">${L().copy}</button>`:''}</div>`;
+function renderOne(){
+  $('oName').textContent=cur.name;$('oTeam').textContent=L().teamName(cur.team);
+  $('oInfo').innerHTML=box('iLogin',cur.login,1)+box('iPass',cur.password,1)+box('iEmail',cur.email)+box('iFinished',cur.finished)+box('iDur',L().mins(cur.minutes))+box('iSkipped',cur.skipped)+box('iId',cur.id);
+  $('oInfo').querySelectorAll('[data-copy]').forEach(b=>b.onclick=()=>{navigator.clipboard?.writeText(b.dataset.copy);b.textContent=L().copied;setTimeout(()=>b.textContent=L().copy,1200)});
+  renderGTabs();renderGSec();paint();
+}
+function renderGTabs(){
+  $('gTabs').innerHTML=secs().map(s=>{const ok=s.qs.filter(x=>marks[x.n]===1).length,g=s.qs.filter(x=>marks[x.n]!==undefined).length;
+    return `<button type="button" class="tab ${s.s===gtab?'on':''}" data-s="${s.s}"><span class="k">${s.s}</span>${esc(sname(s))}<small>${ok}/${s.qs.length}${g<s.qs.length?' · '+(s.qs.length-g)+'?':''}</small></button>`}).join('');
+  $('gTabs').querySelectorAll('.tab').forEach(b=>b.onclick=()=>{gtab=b.dataset.s;renderGTabs();renderGSec();paint()});
+}
+function renderGSec(){
+  const s=secs().find(x=>x.s===gtab),sk=skippedList();
+  $('gSecs').innerHTML=s.qs.map(x=>`<div class="gq" id="g${x.n}"><span class="qn">Q${x.n}</span>
+      <div><p class="tx">${esc(qt(x))}</p><p class="ck"><b>${L().check}</b> ${esc(qc(x))}</p>
+        ${REP[x.n]?`<span class="ans">${L().submitted}<b dir="ltr">${esc(cur[REP[x.n]]||L().none)}</b></span>`:''}
+        ${sk.includes(x.n)?` <span class="badge b-gold" style="margin-top:6px">${L().skippedTag}</span>`:''}</div>
+      <div class="act"><div class="tog"><button type="button" class="y" data-q="${x.n}" data-v="1">${L().yes}</button><button type="button" class="n" data-q="${x.n}" data-v="0">${L().no}</button></div>
+        <input class="nt" data-note="${x.n}" placeholder="${L().note}" value="${esc(notes[x.n]||'')}"></div></div>`).join('')+
+    `<div class="secbar"><button class="btn ghost sm" type="button" id="allYes">${L().allYes}</button><button class="btn ghost sm" type="button" id="clrSec">${L().clear}</button></div>`;
+  $('gSecs').querySelectorAll('.tog button').forEach(b=>b.onclick=()=>{const k=b.dataset.q,v=+b.dataset.v;if(marks[k]===v)delete marks[k];else marks[k]=v;dirty=true;paint();renderGTabs()});
+  $('gSecs').querySelectorAll('[data-note]').forEach(i=>i.oninput=()=>{notes[i.dataset.note]=i.value;dirty=true});
+  $('allYes').onclick=()=>{s.qs.forEach(x=>{if(marks[x.n]===undefined)marks[x.n]=1});dirty=true;paint();renderGTabs()};
+  $('clrSec').onclick=()=>{s.qs.forEach(x=>delete marks[x.n]);dirty=true;paint();renderGTabs()};
+}
+function paint(){
+  let tot=0,g=0;
+  D.questions.forEach(x=>{const v=marks[x.n];if(v!==undefined){g++;tot+=v}
+    const row=$('g'+x.n);if(!row)return;row.className='gq'+(v===1?' v1':v===0?' v0':'');
+    row.querySelector('.y').classList.toggle('on',v===1);row.querySelector('.n').classList.toggle('on',v===0)});
+  const n=D.questions.length;
+  $('dScore').textContent=tot+' / '+n+(g?' · '+Math.round(tot*1000/n)/10+'%':'');
+  $('dSub').textContent=L().graded(g,n);
+}
+$('gSave').onclick=async()=>{
+  const b=$('gSave');b.disabled=true;b.textContent=L().saving;$('dSaved').textContent='';
+  store.set('pa_grader',$('oGrader').value.trim());
+  try{const d=await post({action:'save',code,id:cur.id,grader:$('oGrader').value,general:$('oGeneral').value,marks,notes});
+    if(!d.ok)throw 0;dirty=false;
+    const t=new Date().toLocaleTimeString(lang==='ar'?'ar-SA':'en-GB',{hour:'2-digit',minute:'2-digit'});
+    $('dSaved').textContent=L().saved(t)+(d.result?' · '+(lang==='ar'?d.result:({'ناجح':'Pass','لم يجتز':'Fail','قيد التصحيح':'Grading in progress'}[d.result]||d.result)):'')}
+  catch(e){$('dSaved').textContent=L().saveErr}
+  finally{b.disabled=false;b.textContent=L().save}
+};
+}
+</script>
+</body>
+</html>
