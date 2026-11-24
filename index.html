@@ -456,6 +456,7 @@ $('langBtn').onclick=()=>{lang=lang==='ar'?'en':'ar';store.set('pa_lang',lang);a
 $('modeBtn').onclick=()=>{if(dirty&&!confirm(L().unsaved))return;dirty=false;mode=mode==='grader'?'taker':'grader';history.replaceState(null,'',mode==='grader'?'#grader':location.pathname);show();window.scrollTo(0,0)};
 window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});
 
+applyLang();
 fetch(API).then(r=>r.json()).then(d=>{
   if(!d.ok||!d.questions||!d.questions.length)throw 0;
   D=d;$('loading').classList.add('hide');
