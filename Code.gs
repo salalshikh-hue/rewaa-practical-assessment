@@ -61,6 +61,7 @@ function doPost(e) {
     if (b.action === 'list') return out_(list_());
     if (b.action === 'load') return out_(load_(b.id));
     if (b.action === 'save') return out_(save_(b));
+    if (b.action === 'add') return out_(add_(b));
     return out_({ ok: false, error: 'unknown' });
   } catch (err) {
     return out_({ ok: false, error: String(err) });
@@ -149,6 +150,18 @@ function submit_(b) {
     txt_(b.skipped), txt_(b.r82), txt_(b.r83), txt_(b.r84), txt_(b.r85), ST.WAIT, txt_(c[14]), txt_(c[15]), txt_(c[16]), mins]]);
   addGradeRow_(id, name, team, whenS);
   return { ok: true, id: id, minutes: mins };
+}
+
+/* إضافة موظف يدوياً من شاشة المصحح (ما حل من خلال الرابط) */
+function add_(b) {
+  const name = String(b.name || '').trim();
+  if (name.length < 3) return { ok: false, error: 'missing' };
+  const id = newId_(); const whenS = Utilities.formatDate(new Date(), TZ, 'yyyy-MM-dd HH:mm');
+  const sh = sh_('T'); const r = sh.getLastRow() + 1;
+  sh.getRange(r, 1, 1, TC).setValues([[id, whenS, name, b.team || '', txt_(b.email), txt_(b.login), txt_(b.password), txt_(b.finished),
+    txt_(b.skipped), txt_(b.r82), txt_(b.r83), txt_(b.r84), txt_(b.r85), ST.WAIT, '', '', '', txt_(b.minutes)]]);
+  addGradeRow_(id, name, b.team || '', whenS);
+  return { ok: true, id: id };
 }
 
 function addGradeRow_(id, name, team, when) {
