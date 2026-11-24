@@ -299,15 +299,6 @@ footer{color:var(--text-faint);font-size:12.5px;text-align:center;padding:34px 0
       <div><label for="aFinished" data-t="fFinished"></label><input id="aFinished" type="date" dir="ltr"></div>
       <div><label for="aLogin" data-t="fLogin"></label><input id="aLogin" dir="ltr"></div>
       <div><label for="aPass" data-t="fPass"></label><input id="aPass" dir="ltr" autocomplete="off"></div>
-      <div><label for="aSkipped" data-t="aSkipped"></label><input id="aSkipped" dir="ltr" placeholder="Q18, Q35"></div>
-      <div><label for="aMinutes" data-t="aMinutes"></label><input id="aMinutes" inputmode="decimal" dir="ltr"></div>
-      <div class="full"><label data-t="fReports"></label>
-        <div class="rep">
-          <div><label for="a82" data-t="r82"></label><input id="a82" dir="ltr"></div>
-          <div><label for="a83" data-t="r83"></label><input id="a83" dir="ltr"></div>
-          <div><label for="a84" data-t="r84"></label><input id="a84" dir="ltr"></div>
-          <div><label for="a85" data-t="r85"></label><input id="a85" dir="ltr"></div>
-        </div></div>
     </div>
     <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
       <button class="btn" id="aSave" type="submit" data-t="addSave"></button>
@@ -327,6 +318,8 @@ footer{color:var(--text-faint);font-size:12.5px;text-align:center;padding:34px 0
       <div class="grid" style="margin-top:14px">
         <div><label for="oGrader" data-t="grName"></label><input id="oGrader"></div>
         <div><label for="oGeneral" data-t="general"></label><input id="oGeneral"></div>
+        <div><label for="oSkipped" data-t="aSkipped"></label><input id="oSkipped" dir="ltr" placeholder="Q18, Q35"></div>
+        <div><label for="oMinutes" data-t="aMinutes"></label><input id="oMinutes" inputmode="decimal" dir="ltr"></div>
       </div>
     </div>
     <div class="tabs" id="gTabs" style="margin-top:14px"></div>
@@ -388,7 +381,7 @@ needAll:'اكتب إيميلك وإيميل الدخول وكلمة المرور
 doneH:'تم تسليم الاختبار',doneP:(id,t)=>'رقم التسليم: \u2066'+id+'\u2069'+(t?' · المدة: '+t:'')+'. لا تدخل الحساب التجريبي بعد الحين.',
 gLoginH:'شاشة التصحيح',gLoginP:'اكتب رمز المصحح لفتح التسليمات.',open:'فتح',badCode:'الرمز غير صحيح.',netErr:'تعذّر الاتصال. حاول مرة ثانية.',
 listH:'التسليمات',refresh:'تحديث',thName:'الموظف',thTeam:'الفريق',thAt:'وقت التسليم',thDur:'المدة',thStatus:'الحالة',thScore:'الدرجة',empty:'ما فيه تسليمات للحين.',
-addBtn:'+ إضافة موظف يدوياً',addH:'إضافة موظف يدوياً',addP:'لموظف حل الاختبار بدون الرابط. اكتب بياناته وبيانات حسابه التجريبي، وبعدها تفتح لك شاشة تصحيحه.',aSkipped:'الأسئلة المتروكة',aMinutes:'المدة بالدقائق (اختياري)',addSave:'إضافة وفتح التصحيح',addCancel:'إلغاء',addNeed:'اكتب اسم الموظف واختر فريقه.',adding:'جاري الإضافة…',
+addBtn:'+ إضافة موظف يدوياً',addH:'إضافة موظف يدوياً',addP:'لموظف حل الاختبار بدون الرابط. اكتب بياناته وبيانات حسابه التجريبي، والأسئلة المتروكة وأرقام التقارير والمدة تعبّيها في شاشة التصحيح.',aSkipped:'الأسئلة المتروكة',aMinutes:'المدة بالدقائق',addSave:'إضافة وفتح التصحيح',addCancel:'إلغاء',addNeed:'اكتب اسم الموظف واختر فريقه.',adding:'جاري الإضافة…',
 back:'رجوع',grName:'اسم المصحح',general:'ملاحظة عامة',
 iLogin:'إيميل الدخول',iPass:'كلمة المرور',iEmail:'إيميل الموظف',iFinished:'تاريخ الإنهاء',iSkipped:'الأسئلة المتروكة',iDur:'المدة',iId:'رقم التسليم',none:'لا يوجد',copy:'نسخ',copied:'تم النسخ',
 yes:'✓ صح',no:'✗ خطأ',note:'ملاحظة (اختياري)',submitted:'إجابة الموظف: ',skippedTag:'تركه الموظف',allYes:'الباقي صح',clear:'مسح القسم',
@@ -433,7 +426,7 @@ needAll:'Enter your email, the login email and password, and tick the last box.'
 doneH:'Assessment submitted',doneP:(id,t)=>'Submission number: '+id+(t?' · Time: '+t:'')+'. Do not log in to the trial account from now on.',
 gLoginH:'Grading',gLoginP:'Enter the grader code to open submissions.',open:'Open',badCode:'Wrong code.',netErr:'Connection failed. Please try again.',
 listH:'Submissions',refresh:'Refresh',thName:'Employee',thTeam:'Team',thAt:'Submitted',thDur:'Time',thStatus:'Status',thScore:'Score',empty:'No submissions yet.',
-addBtn:'+ Add employee manually',addH:'Add employee manually',addP:'For an employee who took the assessment without the link. Enter their details and trial account login, then their grading screen opens.',aSkipped:'Skipped questions',aMinutes:'Time in minutes (optional)',addSave:'Add and open grading',addCancel:'Cancel',addNeed:'Enter the employee name and choose a team.',adding:'Adding…',
+addBtn:'+ Add employee manually',addH:'Add employee manually',addP:'For an employee who took the assessment without the link. Enter their details and trial account login; skipped questions, report answers and time go in the grading screen.',aSkipped:'Skipped questions',aMinutes:'Time in minutes',addSave:'Add and open grading',addCancel:'Cancel',addNeed:'Enter the employee name and choose a team.',adding:'Adding…',
 back:'Back',grName:'Grader name',general:'General note',
 iLogin:'Login email',iPass:'Password',iEmail:'Employee email',iFinished:'Date completed',iSkipped:'Skipped questions',iDur:'Time taken',iId:'Submission number',none:'None',copy:'Copy',copied:'Copied',
 yes:'✓ Pass',no:'✗ Fail',note:'Note (optional)',submitted:'Employee answer: ',skippedTag:'Skipped by employee',allYes:'Rest pass',clear:'Clear section',
@@ -643,7 +636,7 @@ $('gAdd').addEventListener('submit',async e=>{
   if(v('aName').length<3||!v('aTeam')){m.textContent=L().addNeed;m.classList.remove('hide');return}
   const b=$('aSave');b.disabled=true;b.textContent=L().adding;
   try{const d=await post({action:'add',code,name:v('aName'),team:v('aTeam'),email:v('aEmail'),login:v('aLogin'),password:$('aPass').value,
-      finished:v('aFinished'),skipped:v('aSkipped'),minutes:v('aMinutes'),r82:v('a82'),r83:v('a83'),r84:v('a84'),r85:v('a85')});
+      finished:v('aFinished')});
     if(!d.ok)throw d.error;
     $('gAdd').reset();$('gAdd').classList.add('hide');
     const l=await post({action:'list',code});if(l.ok)items=l.items;
@@ -677,7 +670,8 @@ $('gBack').onclick=()=>{if(dirty&&!confirm(L().unsaved))return;dirty=false;cur=n
 const box=(k,v,cp)=>`<div><span>${L()[k]}</span><b dir="ltr">${esc(v||L().none)}</b>${cp&&v?` <button class="copy" type="button" data-copy="${esc(v)}">${L().copy}</button>`:''}</div>`;
 function renderOne(){
   $('oName').textContent=cur.name;$('oTeam').textContent=L().teamName(cur.team);
-  $('oInfo').innerHTML=box('iLogin',cur.login,1)+box('iPass',cur.password,1)+box('iEmail',cur.email)+box('iFinished',cur.finished)+box('iDur',L().mins(cur.minutes))+box('iSkipped',cur.skipped)+box('iId',cur.id);
+  $('oInfo').innerHTML=box('iLogin',cur.login,1)+box('iPass',cur.password,1)+box('iEmail',cur.email)+box('iFinished',cur.finished)+box('iId',cur.id);
+  $('oSkipped').value=cur.skipped||'';$('oMinutes').value=cur.minutes||'';
   $('oInfo').querySelectorAll('[data-copy]').forEach(b=>b.onclick=()=>{navigator.clipboard?.writeText(b.dataset.copy);b.textContent=L().copied;setTimeout(()=>b.textContent=L().copy,1200)});
   renderGTabs();renderGSec();paint();
 }
@@ -690,13 +684,15 @@ function renderGSec(){
   const s=secs().find(x=>x.s===gtab),sk=skippedList();
   $('gSecs').innerHTML=s.qs.map(x=>`<div class="gq" id="g${x.n}"><span class="qn">Q${x.n}</span>
       <div><p class="tx">${esc(qt(x))}</p><p class="ck"><b>${L().check}</b> ${esc(qc(x))}</p>
-        ${REP[x.n]?`<span class="ans">${L().submitted}<b dir="ltr">${esc(cur[REP[x.n]]||L().none)}</b></span>`:''}
+        ${REP[x.n]?`<label class="ans" style="display:flex;gap:8px;align-items:center">${L().submitted}<input class="nt" style="margin:0;max-width:160px;background:#fff" dir="ltr" data-rep="${REP[x.n]}" value="${esc(cur[REP[x.n]]||'')}"></label>`:''}
         ${sk.includes(x.n)?` <span class="badge b-gold" style="margin-top:6px">${L().skippedTag}</span>`:''}</div>
       <div class="act"><div class="tog"><button type="button" class="y" data-q="${x.n}" data-v="1">${L().yes}</button><button type="button" class="n" data-q="${x.n}" data-v="0">${L().no}</button></div>
         <input class="nt" data-note="${x.n}" placeholder="${L().note}" value="${esc(notes[x.n]||'')}"></div></div>`).join('')+
     `<div class="secbar"><button class="btn ghost sm" type="button" id="allYes">${L().allYes}</button><button class="btn ghost sm" type="button" id="clrSec">${L().clear}</button></div>`;
+  ['oSkipped','oMinutes'].forEach(id=>$(id).oninput=()=>{cur[id==='oSkipped'?'skipped':'minutes']=$(id).value;dirty=true});
   $('gSecs').querySelectorAll('.tog button').forEach(b=>b.onclick=()=>{const k=b.dataset.q,v=+b.dataset.v;if(marks[k]===v)delete marks[k];else marks[k]=v;dirty=true;paint();renderGTabs()});
   $('gSecs').querySelectorAll('[data-note]').forEach(i=>i.oninput=()=>{notes[i.dataset.note]=i.value;dirty=true});
+  $('gSecs').querySelectorAll('[data-rep]').forEach(i=>i.oninput=()=>{cur[i.dataset.rep]=i.value;dirty=true});
   $('allYes').onclick=()=>{s.qs.forEach(x=>{if(marks[x.n]===undefined)marks[x.n]=1});dirty=true;paint();renderGTabs()};
   $('clrSec').onclick=()=>{s.qs.forEach(x=>delete marks[x.n]);dirty=true;paint();renderGTabs()};
 }
@@ -712,7 +708,8 @@ function paint(){
 $('gSave').onclick=async()=>{
   const b=$('gSave');b.disabled=true;b.textContent=L().saving;$('dSaved').textContent='';
   store.set('pa_grader',$('oGrader').value.trim());
-  try{const d=await post({action:'save',code,id:cur.id,grader:$('oGrader').value,general:$('oGeneral').value,marks,notes});
+  try{const d=await post({action:'save',code,id:cur.id,grader:$('oGrader').value,general:$('oGeneral').value,marks,notes,
+      skipped:$('oSkipped').value.trim(),minutes:$('oMinutes').value.trim(),r82:cur.r82||'',r83:cur.r83||'',r84:cur.r84||'',r85:cur.r85||''});
     if(!d.ok)throw 0;dirty=false;
     const t=new Date().toLocaleTimeString(lang==='ar'?'ar-SA':'en-GB',{hour:'2-digit',minute:'2-digit'});
     $('dSaved').textContent=L().saved(t)+(d.result?' · '+(lang==='ar'?d.result:({'ناجح':'Pass','لم يجتز':'Fail','قيد التصحيح':'Grading in progress'}[d.result]||d.result)):'')}

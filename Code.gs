@@ -252,7 +252,10 @@ function save_(b) {
   if (tn > 0) {
     const ids = ts.getRange(2, 1, tn, 1).getValues();
     for (let i = 0; i < ids.length; i++) if (ids[i][0] === b.id) {
-      ts.getRange(i + 2, 14).setValue(graded === NQ ? ST.DONE : graded ? ST.PART : ST.WAIT); break;
+      ts.getRange(i + 2, 14).setValue(graded === NQ ? ST.DONE : graded ? ST.PART : ST.WAIT);
+      if (b.skipped !== undefined) ts.getRange(i + 2, 9, 1, 5).setValues([[txt_(b.skipped), txt_(b.r82), txt_(b.r83), txt_(b.r84), txt_(b.r85)]]);
+      if (b.minutes !== undefined) { const mv = String(b.minutes).trim(); ts.getRange(i + 2, 18).setValue(mv !== '' && !isNaN(Number(mv)) ? Number(mv) : txt_(mv)); }
+      break;
     }
   }
   SpreadsheetApp.flush();
